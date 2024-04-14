@@ -1,6 +1,8 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "APBD_cw5", "APBD_cw5\APBD_cw5.csproj", "{D0BB6904-4E1C-4D13-8275-9252D5BFC375}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "APBD_cw5", "APBD_cw5\APBD_cw5.csproj", "{66584CED-701F-465B-B4E3-F81CD11F6384}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Api", "Api\Api.csproj", "{F125A9F8-0F3A-40B7-8DCB-3C58B69BE9C2}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -8,9 +10,13 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{D0BB6904-4E1C-4D13-8275-9252D5BFC375}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{D0BB6904-4E1C-4D13-8275-9252D5BFC375}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{D0BB6904-4E1C-4D13-8275-9252D5BFC375}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{D0BB6904-4E1C-4D13-8275-9252D5BFC375}.Release|Any CPU.Build.0 = Release|Any CPU
+		{66584CED-701F-465B-B4E3-F81CD11F6384}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{66584CED-701F-465B-B4E3-F81CD11F6384}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{66584CED-701F-465B-B4E3-F81CD11F6384}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{66584CED-701F-465B-B4E3-F81CD11F6384}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F125A9F8-0F3A-40B7-8DCB-3C58B69BE9C2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F125A9F8-0F3A-40B7-8DCB-3C58B69BE9C2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F125A9F8-0F3A-40B7-8DCB-3C58B69BE9C2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F125A9F8-0F3A-40B7-8DCB-3C58B69BE9C2}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

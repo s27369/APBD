@@ -8,11 +8,14 @@ public interface IMockDb
     public void Add(Animal animal);
     public bool Delete(int id);
     public bool Update(Animal animal);
+    public void Add(Appointment appointment);
+    public ICollection<Appointment> GetAppointmentsByAnimalId(int id);
 }
 
 public class MockDb : IMockDb
 {
     private ICollection<Animal> _animals;
+    private ICollection<Appointment> _appointments;
 
     public MockDb()
     {
@@ -41,6 +44,30 @@ public class MockDb : IMockDb
                 Category = "dog",
                 FurColor = "beige",
                 Mass = 4.8
+            }
+        };
+        _appointments = new List<Appointment>
+        {
+            new Appointment()
+            {
+                Time = new DateTime(2024, 01, 02),
+                Animal = GetById(1),
+                Description = "A regular checkup",
+                Price = 85.0
+            },
+            new Appointment()
+            {
+                Time = new DateTime(2024, 02, 03),
+                Animal = GetById(1),
+                Description = "New diet recommendations due to being overweight",
+                Price = 30.5
+            },
+            new Appointment()
+            {
+                Time = new DateTime(2024, 03, 04),
+                Animal = GetById(2),
+                Description = "A regular checkup",
+                Price = 125.0
             }
         };
     }
@@ -90,6 +117,16 @@ public class MockDb : IMockDb
         }
         else
             return false;
+    }
 
+    public void Add(Appointment appointment)
+    {
+        _appointments.Add(appointment);
+    }
+
+    public ICollection<Appointment> GetAppointmentsByAnimalId(int id)
+    {
+        var appointments = _appointments.Where(appointment => appointment.Animal.Id == id).ToList();
+        return appointments;
     }
 }

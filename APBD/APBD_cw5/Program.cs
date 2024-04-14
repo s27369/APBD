@@ -30,8 +30,16 @@ app.MapGet("/animals/{id}", (IMockDb mockDb, int id) =>
     return Results.Ok(animal);
 });
 
-    // .WithName("GetWeatherForecast")
-    // .WithOpenApi();
+app.MapGet("/appointments/{id}", (IMockDb mockDb, int id) =>
+{
+    return Results.Ok(mockDb.GetAppointmentsByAnimalId(id));
+});
+app.MapPost("/appointments", (IMockDb mockDb, Appointment appointment) =>
+{
+    mockDb.Add(appointment);
+    return Results.Created();
+});
+
 
 app.MapPost("/animals", (IMockDb mockDb, Animal animal) =>
 {

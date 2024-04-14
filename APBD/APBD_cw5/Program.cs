@@ -1,10 +1,12 @@
+using APBD_cw5;
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
-
+// builder.Services.AddControllers();
+builder.Services.AddSingleton<IMockDb, MockDb>();
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -16,29 +18,59 @@ if (app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 
-var summaries = new[]
+app.MapGet("/animals", (IMockDb mockDb) =>
 {
-    "Freezing", "Bracing", "Chilly", "Cool", "Mild", "Warm", "Balmy", "Hot", "Sweltering", "Scorching"
-};
+    return Results.Ok(mockDb.GetAll());
+});
+app.MapGet("/animals/{id}", (IMockDb mockDb, int id) =>
+{
+    var animal = mockDb.GetById(id);
+    if (animal is null) return Results.NotFound();
+    
+    return Results.Ok(animal);
+});
 
-app.MapGet("/weatherforecast", () =>
+    // .WithName("GetWeatherForecast")
+    // .WithOpenApi();
+
+app.MapPost("/animals", (IMockDb mockDb, Animal animal) =>
+{
+    mockDb.Add(animal);
+    return Results.Created();
+});
+
+app.MapDelete("/animals", (IMockDb mockDb, int id) =>
     {
-        var forecast = Enumerable.Range(1, 5).Select(index =>
-                new WeatherForecast
-                (
-                    DateOnly.FromDateTime(DateTime.Now.AddDays(index)),
-                    Random.Shared.Next(-20, 55),
-                    summaries[Random.Shared.Next(summaries.Length)]
-                ))
-            .ToArray();
-        return forecast;
-    })
-    .WithName("GetWeatherForecast")
-    .WithOpenApi();
+        if (mockDb.Delete(id))
+            return Results.Ok();
+        else
+            return Results.NotFound();
+        
+    }
+);
+
+app.MapPut("/animals/{id}", (IMockDb mockDb, int id, Animal animal) =>
+{
+    var existingAnimal = mockDb.GetById(id);
+    if (existingAnimal is null)
+    {
+        return Results.NotFound();
+    }
+
+    existingAnimal.Name = animal.Name;
+    existingAnimal.Category = animal.Category;
+    existingAnimal.Mass = animal.Mass;
+    existingAnimal.FurColor = animal.FurColor;
+
+    mockDb.Update(existingAnimal);
+
+    return Results.Ok();
+});
 
 app.Run();
 
-record WeatherForecast(DateOnly Date, int TemperatureC, string? Summary)
-{
-    public int TemperatureF => 32 + (int)(TemperatureC / 0.5556);
-}
+
+// record WeatherForecast(DateOnly Date, int TemperatureC, string? Summary)
+// {
+//     public int TemperatureF => 32 + (int)(TemperatureC / 0.5556);
+// }

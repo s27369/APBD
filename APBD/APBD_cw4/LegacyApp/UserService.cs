@@ -5,6 +5,26 @@ namespace LegacyApp
     public class UserService
     {
         // added IsValidUser(), GetAge(), CreateUser(), SetCreditLimit()
+        
+        public bool AddUser(string firstName, string lastName, string email, DateTime dateOfBirth, int clientId)
+        {
+            if (!IsValidUser(firstName, lastName, email, dateOfBirth)) return false;
+
+            int age = GetAge(dateOfBirth);
+            if (age < 21) return false;
+
+            var clientRepository = new ClientRepository();
+            var client = clientRepository.GetById(clientId);
+
+            var user = CreateUser(firstName, lastName, email, dateOfBirth, client);
+
+            SetCreditLimit(user);
+
+            if (user.HasCreditLimit && user.CreditLimit < 500) return false;
+
+            UserDataAccess.AddUser(user);
+            return true;
+        }
         private bool IsValidUser(string firstName, string lastName, string email, DateTime dateOfBirth)
         {
             return !string.IsNullOrEmpty(firstName)
@@ -46,25 +66,6 @@ namespace LegacyApp
                     creditLimit *= 2;
                 user.CreditLimit = creditLimit;
             }
-        }
-        public bool AddUser(string firstName, string lastName, string email, DateTime dateOfBirth, int clientId)
-        {
-            if (!IsValidUser(firstName, lastName, email, dateOfBirth)) return false;
-
-            int age = GetAge(dateOfBirth);
-            if (age < 21) return false;
-
-            var clientRepository = new ClientRepository();
-            var client = clientRepository.GetById(clientId);
-
-            var user = CreateUser(firstName, lastName, email, dateOfBirth, client);
-
-            SetCreditLimit(user);
-
-            if (user.HasCreditLimit && user.CreditLimit < 500) return false;
-
-            UserDataAccess.AddUser(user);
-            return true;
         }
     }
 }

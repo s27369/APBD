@@ -1,6 +1,6 @@
 ﻿namespace APBD_cw5;
 
-
+//logika powinna byc w ianimalservice a nie w mockdb
 public interface IMockDb
 {
     public ICollection<Animal> GetAll();

@@ -14,6 +14,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LegacyAppConsumer", "APBD_c
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "APBD_cw4", "APBD_cw4", "{D4AA408E-C8C7-4540-B208-5F00594DCEFB}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "APBD_cw6", "APBD_cw6\APBD_cw6.csproj", "{24993C77-8A8C-4D7F-9B88-175D1C6D4553}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProbnyKolos", "ProbnyKolos\ProbnyKolos.csproj", "{83DC873E-E0BA-4169-B4A4-E99DA333B22B}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -44,6 +48,14 @@ Global
 		{EFB10BCF-4C85-40B6-9279-081B875378E8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{EFB10BCF-4C85-40B6-9279-081B875378E8}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{EFB10BCF-4C85-40B6-9279-081B875378E8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{24993C77-8A8C-4D7F-9B88-175D1C6D4553}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{24993C77-8A8C-4D7F-9B88-175D1C6D4553}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{24993C77-8A8C-4D7F-9B88-175D1C6D4553}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{24993C77-8A8C-4D7F-9B88-175D1C6D4553}.Release|Any CPU.Build.0 = Release|Any CPU
+		{83DC873E-E0BA-4169-B4A4-E99DA333B22B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{83DC873E-E0BA-4169-B4A4-E99DA333B22B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{83DC873E-E0BA-4169-B4A4-E99DA333B22B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{83DC873E-E0BA-4169-B4A4-E99DA333B22B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{160E259D-8FC6-4DB1-B3F2-EA4EBABBCF07} = {D4AA408E-C8C7-4540-B208-5F00594DCEFB}
